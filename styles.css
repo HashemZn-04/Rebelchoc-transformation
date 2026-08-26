@@ -421,12 +421,12 @@ section { padding: 80px 24px; }
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #2a1200;
+  color: var(--gold-dim);
   margin-bottom: 28px;
   line-height: 1.7;
 }
 .how-item--demonstrate { color: var(--gold-dim); }
-.how-item--generate { color: #c0392b; margin-bottom: 0; }
+.how-item--generate { color: var(--gold-dim); margin-bottom: 0; }
 
 /* ─── Let's React ─── */
 .lets-react-section {
