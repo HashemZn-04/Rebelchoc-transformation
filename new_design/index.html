@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebel Choc — World Liberation Day</title>
+  <meta name="description" content="Manneken Pis returns as the symbol of world resistance. Wear the World Liberation Day tee, taste the original Rebel Choc in Brussels, and join the rebellion with humour.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#home">Skip to content</a>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ══════════════ SIDEBAR (desktop rail + mobile drawer) ══════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Site navigation">
+  <div class="sidebar-inner">
+
+    <div class="sidebar-head">
+      <a href="#home" class="wordmark" aria-label="Rebel Choc — home">
+        <span class="wordmark-full">Rebel<em>Choc</em></span>
+        <span class="wordmark-mono" aria-hidden="true">R<em>C</em></span>
+      </a>
+      <button class="drawer-close" id="drawer-close" aria-label="Close navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Hick–Hyman: exactly 4 core destinations; chapters nest under The Story -->
+    <nav class="sidebar-nav" aria-label="Sections">
+      <div class="nav-group">
+        <a href="#story" class="nav-link" data-spy="story">
+          <span class="nav-num">01</span><span class="nav-text">The Story</span>
+        </a>
+        <div class="nav-sub">
+          <a href="#chapter-1621" class="nav-sublink" data-spy="chapter-1621"><span class="nav-text">1621 · The Origin</span></a>
+          <a href="#chapter-1938" class="nav-sublink" data-spy="chapter-1938"><span class="nav-text">1938 · The Resistance</span></a>
+          <a href="#chapter-2026" class="nav-sublink" data-spy="chapter-2026"><span class="nav-text">2026 · The Re-emergence</span></a>
+          <a href="#manifesto" class="nav-sublink" data-spy="manifesto"><span class="nav-text">The Manifesto</span></a>
+        </div>
+      </div>
+      <a href="#join" class="nav-link" data-spy="join">
+        <span class="nav-num">02</span><span class="nav-text">How to Join</span>
+      </a>
+      <a href="#chocolate" class="nav-link" data-spy="chocolate">
+        <span class="nav-num">03</span><span class="nav-text">The Chocolate</span>
+      </a>
+      <a href="#order" class="nav-link" data-spy="order">
+        <span class="nav-num">04</span><span class="nav-text">Order the Tee</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <a href="#order" class="btn btn-primary sidebar-cta">Shop the Rebellion</a>
+      <button class="collapse-toggle" id="collapse-toggle" aria-label="Collapse navigation" aria-expanded="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+
+  </div>
+</aside>
+
+<div class="drawer-overlay" id="drawer-overlay"></div>
+
+<!-- ══════════════ MOBILE TOP BAR ══════════════ -->
+<header class="mobile-bar">
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  </button>
+  <a href="#home" class="wordmark wordmark-bar">Rebel<em>Choc</em></a>
+  <a href="#order" class="btn btn-primary btn-bar">Order</a>
+</header>
+
+<main class="main" id="main">
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Brussels, Belgium · A tradition of defiance since 1619</p>
+        <h1 class="hero-title reveal delay-1">Laugh.<br>Rebel.<br><span class="accent">Resist.</span></h1>
+        <p class="hero-lead reveal delay-2">Manneken Pis has returned as the symbol of world resistance. Wear the tee, share the humour, and join the <strong>World Liberation Day</strong>.</p>
+        <div class="hero-actions reveal delay-3">
+          <a href="#order" class="btn btn-primary btn-lg">Shop the Rebellion</a>
+          <a href="#story" class="btn btn-ghost btn-lg">Read the story</a>
+        </div>
+        <ul class="hero-marks reveal delay-4" aria-label="Three chapters">
+          <li><a href="#chapter-1621">1621</a></li>
+          <li><a href="#chapter-1938">1938</a></li>
+          <li><a href="#chapter-2026">2026</a></li>
+        </ul>
+      </div>
+      <figure class="hero-figure reveal delay-2">
+        <img src="assets/hero-poster.png" alt="World Liberation Day poster: the Manneken Pis statue urinating into a carved ashtray bearing a politician's face, with the words Save the World." width="416" height="533">
+        <figcaption>The World Liberation Day — limited edition</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════════ THE STORY ══════════════ -->
+  <div id="story" class="story-anchor" aria-hidden="true"></div>
+
+  <!-- Chapter I — 1621 -->
+  <section class="chapter" id="chapter-1621">
+    <div class="chapter-grid">
+      <div class="chapter-copy reveal">
+        <p class="chapter-label">Chapter I · 1621</p>
+        <h2 class="chapter-title">The most renowned symbol of rebellion</h2>
+        <p class="chapter-body">Since the 14th century, <strong>Manneken Pis</strong> has stood in the heart of Brussels as the world's most renowned art symbol of defiance — rebellion, resistance, rejection, and satirical humour.</p>
+        <p class="chapter-body">A small bronze boy with an irreverent answer to every empire that ever marched past him.</p>
+      </div>
+      <figure class="chapter-figure reveal delay-2">
+        <img src="assets/statue-brussels.png" alt="The bronze Manneken Pis fountain statue in Brussels, water arcing from the figure." loading="lazy" width="963" height="769">
+        <figcaption>Manneken Pis, Brussels — defiant since the 14th century</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Chapter II — 1938 -->
+  <section class="chapter chapter--alt" id="chapter-1938">
+    <div class="chapter-grid chapter-grid--flip">
+      <div class="chapter-copy reveal">
+        <p class="chapter-label">Chapter II · 1938</p>
+        <h2 class="chapter-title">He never fails against blindfolded authorities</h2>
+        <p class="chapter-body">In 1938, as Nazism rose across Europe, Belgian artisans answered in bronze: Manneken Pis cast above the face of tyranny. <strong>Resistance with humour — until total victory.</strong></p>
+      </div>
+      <figure class="chapter-figure chapter-figure--artifact reveal delay-2">
+        <img src="assets/ashtray-1938.png" alt="A 1938 Belgian bronze ashtray: a small Manneken Pis figure standing over a caricatured dictator's face cast in the bowl." loading="lazy" width="600" height="769">
+        <figcaption>Belgian bronze, 1938 — a nation's answer, cast in metal</figcaption>
+      </figure>
+    </div>
+
+    <!-- The arch: four centuries, same answer -->
+    <div class="timeline reveal" role="group" aria-label="Timeline of blindfolded leaders Manneken Pis has outlasted">
+      <svg class="timeline-arc" viewBox="0 0 1000 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M 20 140 Q 500 20 980 140" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 7" opacity="0.55"/>
+        <circle cx="20"  cy="140" r="7"/>
+        <circle cx="340" cy="87"  r="7"/>
+        <circle cx="660" cy="87"  r="7"/>
+        <circle cx="980" cy="140" r="9" class="timeline-node--now"/>
+      </svg>
+      <ol class="timeline-labels">
+        <li style="--pos: 2%"><strong>1619</strong><span>Carlos V</span></li>
+        <li style="--pos: 34%"><strong>1880</strong><span>Leopold II</span></li>
+        <li style="--pos: 66%"><strong>1933</strong><span>Hitler</span></li>
+        <li style="--pos: 98%" class="timeline-now"><strong>2026</strong><span>The present day</span></li>
+      </ol>
+      <p class="timeline-caption">Manneken Pis against blindfolded geo-political leaders — four centuries, same answer.</p>
+    </div>
+  </section>
+
+  <!-- Chapter III — 2026 -->
+  <section class="chapter" id="chapter-2026">
+    <div class="chapter-grid">
+      <div class="chapter-copy reveal">
+        <p class="chapter-label">Chapter III · 2026</p>
+        <h2 class="chapter-title">The re-emergence</h2>
+        <p class="chapter-body">The re-emergence of Manneken Pis as the symbol of <strong>defiance, humour and world resistance</strong> has one purpose: to raise human consciousness against the accelerating self-destruction of our planet.</p>
+        <p class="chapter-body">This time he is cast in Belgian chocolate — and printed on cotton.</p>
+      </div>
+      <figure class="chapter-figure reveal delay-2">
+        <img src="assets/chocolate-2026.png" alt="The Rebel Choc edition: a dark-chocolate Manneken Pis figure above a milk-chocolate ashtray bearing a politician's face." loading="lazy" width="1014" height="1080">
+        <figcaption>The 2026 edition — cast in Belgian chocolate, Brussels</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto" id="manifesto">
+    <blockquote class="manifesto-quote reveal">
+      <p>With humour we <em>rebel</em>. With humour we <em>resist</em> the lies. We <em>reject</em> the destruction. We <em>react</em> — to support the international and multilateral organisations that promote peace, solidarity, and problem-solving through negotiation.</p>
+      <cite>— The Rebel Choc manifesto</cite>
+    </blockquote>
+  </section>
+
+  <!-- ══════════════ HOW TO JOIN ══════════════ -->
+  <section class="join" id="join">
+    <div class="section-head reveal">
+      <p class="eyebrow">Solidarity in action</p>
+      <h2 class="section-title">How to join the<br>World Liberation Day</h2>
+    </div>
+    <div class="join-grid">
+      <div class="join-cards reveal-stagger">
+        <a class="join-card" href="#order">
+          <span class="join-step" aria-hidden="true">01</span>
+          <h3 class="join-card-title">Wear</h3>
+          <p class="join-card-text">Put on the World Liberation Day tee — a wearable symbol of resistance, in four colours.</p>
+          <span class="join-card-link">Order the tee →</span>
+        </a>
+        <a class="join-card" href="#chocolate">
+          <span class="join-step" aria-hidden="true">02</span>
+          <h3 class="join-card-title">Taste</h3>
+          <p class="join-card-text">Buy the original Rebel Chocolate — hand-made in Belgium, sold only in Brussels.</p>
+          <span class="join-card-link">Find the chocolate →</span>
+        </a>
+        <div class="join-card join-card--static">
+          <span class="join-step" aria-hidden="true">03</span>
+          <h3 class="join-card-title">Share</h3>
+          <p class="join-card-text">Share part of your income through donations to the human collaterals of leaders' blindfolded decisions — via UNICEF, the UN Refugee Agency and the Red Cross.</p>
+        </div>
+      </div>
+      <figure class="join-figure reveal delay-3">
+        <img src="assets/join-poster.png" alt="Save the World poster in green: Manneken Pis over the carved ashtray, with the words Join the World Liberation Day." loading="lazy" width="790" height="1080">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══════════════ THE CHOCOLATE ══════════════ -->
+  <section class="chocolate" id="chocolate">
+    <div class="chocolate-grid">
+      <figure class="chocolate-figure reveal">
+        <img src="assets/chocolate-solo.png" alt="A solid dark-chocolate Manneken Pis figure." loading="lazy" width="1058" height="617">
+      </figure>
+      <div class="chocolate-copy reveal delay-2">
+        <p class="eyebrow">Where it all began</p>
+        <h2 class="section-title">The original rebellion<br>is made of chocolate</h2>
+        <p class="chapter-body">Before the tee, there was the chocolate. The original <strong>Rebel Choc</strong> — a solid Manneken Pis cast in fine Belgian chocolate — is still made, and still sold.</p>
+        <p class="chapter-body chocolate-exclusive"><strong>Available only in Brussels, Belgium.</strong> No web shop, no shipping. If you want to taste the revolution, you must come to its capital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ORDER ══════════════ -->
+  <section class="order" id="order">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Limited edition · Printed in Belgium</p>
+      <h2 class="section-title">The World Liberation Day Tee</h2>
+      <p class="order-sub">Four colours. Two sizes. One statement.</p>
+    </div>
+
+    <div class="shirt-grid reveal-stagger">
+      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Solar Yellow — suggested filename: assets/tee-yellow.png -->
+      <button type="button" class="shirt-card is-selected" data-colour="Solar Yellow" style="--swatch: #F5D80C" aria-pressed="true">
+        <span class="img-placeholder shirt-placeholder"><span>Solar Yellow tee</span></span>
+        <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Solar Yellow</span>
+      </button>
+      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Pure White — suggested filename: assets/tee-white.png -->
+      <button type="button" class="shirt-card" data-colour="Pure White" style="--swatch: #F8F5F2" aria-pressed="false">
+        <span class="img-placeholder shirt-placeholder"><span>Pure White tee</span></span>
+        <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Pure White</span>
+      </button>
+      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Liberation Green — suggested filename: assets/tee-green.png -->
+      <button type="button" class="shirt-card" data-colour="Liberation Green" style="--swatch: #4DE86B" aria-pressed="false">
+        <span class="img-placeholder shirt-placeholder"><span>Liberation Green tee</span></span>
+        <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Liberation Green</span>
+      </button>
+      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Sky Cyan — suggested filename: assets/tee-cyan.png -->
+      <button type="button" class="shirt-card" data-colour="Sky Cyan" style="--swatch: #1FD3F5" aria-pressed="false">
+        <span class="img-placeholder shirt-placeholder"><span>Sky Cyan tee</span></span>
+        <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Sky Cyan</span>
+      </button>
+    </div>
+
+    <div class="order-panel reveal">
+      <div class="order-row">
+        <div class="size-block">
+          <span class="order-label" id="size-label">Size</span>
+          <div class="size-row" role="group" aria-labelledby="size-label">
+            <button type="button" class="size-btn is-selected" data-size="M" aria-pressed="true">M</button>
+            <button type="button" class="size-btn" data-size="L" aria-pressed="false">L</button>
+          </div>
+        </div>
+        <div class="pick-block">
+          <span class="order-label">Your pick</span>
+          <p class="pick-note" id="pick-note" aria-live="polite">Solar Yellow · Size M</p>
+          <p class="pick-hint">Confirm colour &amp; size at eBay checkout</p>
+        </div>
+      </div>
+
+      <!-- TODO: replace EBAY_LINK_HERE with the real eBay listing URL when provided -->
+      <a href="EBAY_LINK_HERE" class="btn btn-primary btn-buy" target="_blank" rel="noopener">Order now on eBay</a>
+
+      <p class="order-footnote">€5 of every purchase is donated to UNICEF, the UN Refugee Agency &amp; the Red Cross.<br>Secure checkout on eBay · Ships worldwide.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <a href="#home" class="wordmark wordmark-footer">Rebel<em>Choc</em></a>
+    <p class="footer-tagline">Love me · Hate me · Wear me</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#story">The Story</a>
+      <a href="#join">How to Join</a>
+      <a href="#chocolate">The Chocolate</a>
+      <a href="#order">Order the Tee</a>
+    </nav>
+    <p class="footer-donate">Profits support UNICEF, the UN Refugee Agency &amp; the Red Cross.</p>
+    <p class="footer-copy">© <span id="current-year">2026</span> Rebel Choc · www.rebelchoc.com · Brussels, Belgium</p>
+  </footer>
+
+</main>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
