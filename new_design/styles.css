@@ -1,6 +1,6 @@
 /* ============================================================
-   REBEL CHOC — WORLD LIBERATION DAY
-   Dark Mode Premium · Playfair Display / DM Sans
+   REBEL CHOC - WORLD LIBERATION DAY
+   Dark Mode Premium · Archivo Black / Archivo
    ============================================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,18 +12,49 @@
   --ink:       #F8F5F2;
   --ink-soft:  #CFC6BA;
   --ink-mute:  #A89C8D;
-  --crimson:   #E63946;
-  --crimson-hi:#F25563;
   --gold:      #D9A441;
+  --gold-hi:   #E5B95F;
   --line:      rgba(248, 245, 242, 0.13);
   --line-soft: rgba(248, 245, 242, 0.07);
 
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans:  'DM Sans', 'Segoe UI', Arial, sans-serif;
+  /* Exact merch colours, sampled from the shirt design set */
+  --merch-white:  #FFFFFF;
+  --merch-yellow: #FBE810;
+  --merch-green:  #59FC73;
+  --merch-blue:   #0BD6FF;
+  --merch-brown:  #471F0A;  /* the print ink the merch sets its type in */
 
-  --sidebar-w: 288px;
-  --sidebar-w-rail: 84px;
-  --bar-h: 64px;
+  /* ═══ BACKDROP FADE — ADJUST THE STORY'S COLOUR FLOW HERE ═══
+     The page washes dark brown → pastel navy (the band the arc sits on)
+     → merch green → back to dark for the manifesto. The navy→green half
+     of it straddles the join between Chapter II and Chapter III, which is
+     what buys the fade enough room to look smooth.
+
+     The COLOURS: */
+  --fade-brown: var(--bg-2);        /* Chapter II opens in dark brown   */
+  --fade-navy:  #636E95;            /* pastel navy, behind the arc      */
+  --fade-green: var(--merch-green); /* Chapter III                      */
+  --fade-mid:   #5EB584;            /* the exact midpoint of navy and green.
+                                       Chapter II ends on it and Chapter III
+                                       picks it up, so the join is invisible.
+                                       Change the two colours above and this
+                                       must be re-mixed to match, or a seam
+                                       will appear between the sections. */
+
+  /* The STOPS, each a percentage of its own chapter's height. Raise a value
+     to push that colour further down. The limits worth knowing: inside
+     Chapter II the arc occupies 65-82% and its caption 89-93%, so the navy
+     has to be solid across all of that; inside Chapter III the copy starts
+     at 12%, so the green has to have fully arrived by then. */
+  --fade-brown-hold: 50%;  /* Chapter II stays pure brown down to here      */
+  --fade-navy-hold:  90%;  /* ...is fully navy from here (arc sits below)   */
+  --fade-navy-end:   70%;  /* ...holds navy past the caption, then washes   */
+  --fade-green-in:   40%;  /* Chapter III completes the wash to green here  */
+  --fade-green-end:  60%;  /* ...stays green, then fades to the manifesto   */
+
+  /* Flat grotesque type, matching the merch print ("SAVE THE WORLD") */
+  --display: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Helvetica, sans-serif;
+  --sans:    'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   --space-section: clamp(96px, 14vh, 180px);
   --pad-x: clamp(24px, 5vw, 72px);
@@ -45,7 +76,7 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
-::selection { background: var(--crimson); color: var(--bg); }
+::selection { background: var(--gold); color: var(--bg); }
 
 :focus-visible {
   outline: 2px solid var(--gold);
@@ -73,7 +104,7 @@ img { max-width: 100%; height: auto; display: block; }
   top: 0; left: 0;
   height: 3px;
   width: 0;
-  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  background: var(--gold);
   z-index: 250;
 }
 
@@ -95,13 +126,13 @@ img { max-width: 100%; height: auto; display: block; }
   cursor: pointer;
   transition: transform 0.15s var(--ease), box-shadow 0.25s, background 0.2s, color 0.2s;
 }
-/* Von Restorff: crimson appears ONLY on the primary action */
+/* Von Restorff: solid gold appears ONLY on the primary action */
 .btn-primary {
-  background: var(--crimson);
+  background: var(--gold);
   color: #16090b;
-  box-shadow: 0 6px 30px rgba(230, 57, 70, 0.28);
+  box-shadow: 0 6px 30px rgba(217, 164, 65, 0.28);
 }
-.btn-primary:hover { background: var(--crimson-hi); transform: translateY(-2px); box-shadow: 0 10px 38px rgba(230, 57, 70, 0.4); }
+.btn-primary:hover { background: var(--gold-hi); transform: translateY(-2px); box-shadow: 0 10px 38px rgba(217, 164, 65, 0.4); }
 .btn-primary:active { transform: translateY(0); }
 .btn-ghost {
   background: transparent;
@@ -113,20 +144,19 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ─── WORDMARK ─── */
 .wordmark {
-  font-family: var(--serif);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 400;
   font-size: 1.45rem;
   letter-spacing: 0.01em;
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
 }
-.wordmark em { font-style: italic; color: var(--gold); }
-.wordmark-mono { display: none; }
+.wordmark em { font-style: normal; color: var(--gold); }
 
 /* ─── IMAGE PLACEHOLDERS ───
    Swap each <span class="img-placeholder"> for a real <img> when the
-   t-shirt mockups are ready — the HTML comment above each one names the file. */
+   t-shirt mockups are ready - the HTML comment above each one names the file. */
 .img-placeholder {
   display: flex;
   align-items: center;
@@ -142,166 +172,6 @@ img { max-width: 100%; height: auto; display: block; }
   text-align: center;
   padding: 16px;
 }
-
-/* ============================================================
-   SIDEBAR — desktop rail (collapsible) + mobile drawer
-   ============================================================ */
-.sidebar {
-  position: fixed;
-  top: 0; left: 0; bottom: 0;
-  width: min(84vw, 320px);
-  background: var(--bg-2);
-  border-right: 1px solid var(--line-soft);
-  z-index: 220;
-  transform: translateX(-102%);
-  transition: transform 0.35s var(--ease), width 0.3s var(--ease);
-  display: flex;
-  flex-direction: column;
-}
-body.drawer-open .sidebar { transform: translateX(0); }
-body.drawer-open { overflow: hidden; }
-
-.sidebar-inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 24px 20px;
-  overflow-y: auto;
-}
-
-.sidebar-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  min-height: 44px;
-}
-
-.drawer-close {
-  background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  color: var(--ink);
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-}
-.drawer-close:hover { border-color: var(--gold); color: var(--gold); }
-
-.sidebar-nav { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 48px;
-  padding: 10px 12px;
-  border-radius: 7px;
-  border-left: 2px solid transparent;
-  color: var(--ink-soft);
-  font-weight: 500;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-.nav-link:hover { background: var(--line-soft); color: var(--ink); }
-.nav-link.is-active {
-  color: var(--ink);
-  background: var(--line-soft);
-  border-left-color: var(--crimson);
-}
-.nav-num {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  width: 22px;
-  flex-shrink: 0;
-}
-
-.nav-sub {
-  display: flex;
-  flex-direction: column;
-  margin: 2px 0 6px;
-}
-.nav-sublink {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 8px 12px 8px 48px;
-  border-radius: 7px;
-  border-left: 2px solid transparent;
-  color: var(--ink-mute);
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.15s, background 0.15s, border-color 0.15s;
-}
-.nav-sublink:hover { color: var(--ink); background: var(--line-soft); }
-.nav-sublink.is-active { color: var(--gold); border-left-color: var(--gold); }
-
-.sidebar-foot {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line-soft);
-}
-.sidebar-cta { width: 100%; }
-
-.collapse-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  color: var(--ink-soft);
-  width: 44px; height: 44px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  align-self: flex-end;
-  transition: color 0.15s, border-color 0.15s;
-}
-.collapse-toggle:hover { border-color: var(--gold); color: var(--gold); }
-.collapse-toggle svg { transition: transform 0.3s var(--ease); }
-
-.drawer-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 8, 6, 0.66);
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 210;
-}
-body.drawer-open .drawer-overlay { opacity: 1; pointer-events: auto; }
-
-/* ─── MOBILE TOP BAR ─── */
-.mobile-bar {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  height: var(--bar-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 0 16px;
-  background: rgba(22, 20, 18, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line-soft);
-}
-.wordmark-bar { font-size: 1.25rem; }
-.hamburger {
-  background: transparent;
-  border: 0;
-  color: var(--ink);
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  border-radius: 6px;
-}
-.btn-bar { min-height: 44px; padding: 8px 20px; font-size: 0.82rem; }
 
 /* ============================================================
    MAIN LAYOUT
@@ -322,29 +192,26 @@ section { padding: var(--space-section) var(--pad-x); }
 .section-head { max-width: 1200px; margin: 0 auto 56px; }
 .section-head--center { text-align: center; }
 .section-title {
-  font-family: var(--serif);
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 400;
   font-size: clamp(2.1rem, 4.6vw, 3.6rem);
   line-height: 1.08;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 
 /* ─── HERO (F-pattern: copy left-aligned, first) ─── */
+/* A flat merch-yellow field printed in the merch's brown ink, like the poster.
+   The gold radial glows this section used to carry were built for a dark
+   background and only muddy the yellow, so they are gone. */
 .hero {
-  min-height: calc(100vh - var(--bar-h));
+  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 78% 30%, rgba(217, 164, 65, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 45% at 15% 85%, rgba(230, 57, 70, 0.05) 0%, transparent 70%);
-  pointer-events: none;
+  background: var(--merch-yellow);
+  color: var(--merch-brown);
 }
 .hero-grid {
   position: relative;
@@ -357,21 +224,21 @@ section { padding: var(--space-section) var(--pad-x); }
   align-items: center;
 }
 .hero-title {
-  font-family: var(--serif);
-  font-weight: 800;
-  font-size: clamp(3.4rem, 9vw, 7rem);
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3.2rem, 8.4vw, 6.4rem);
   line-height: 0.98;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   margin-bottom: 28px;
 }
-.hero-title .accent { color: var(--crimson); font-style: italic; }
+.hero-title .accent { color: var(--merch-brown); font-style: normal; }
 .hero-lead {
   font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: var(--ink-soft);
+  color: rgba(71, 31, 10, 0.82);
   max-width: 34em;
   margin-bottom: 40px;
 }
-.hero-lead strong { color: var(--ink); }
+.hero-lead strong { color: var(--merch-brown); }
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -388,26 +255,27 @@ section { padding: var(--space-section) var(--pad-x); }
   align-items: center;
   min-height: 44px;
   padding: 8px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(71, 31, 10, 0.3);
   border-radius: 100px;
-  color: var(--ink-mute);
+  color: rgba(71, 31, 10, 0.75);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-decoration: none;
   transition: color 0.15s, border-color 0.15s;
 }
-.hero-marks a:hover { color: var(--gold); border-color: var(--gold); }
+.hero-marks a:hover { color: var(--merch-brown); border-color: var(--merch-brown); }
 
 .hero-figure {
   justify-self: center;
   max-width: 380px;
   position: relative;
 }
+/* Hangs straight, no tilt. The shadow is brown-tinted and lighter, because a
+   heavy black one goes muddy against the yellow. */
 .hero-figure img {
   border-radius: var(--radius);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--line-soft);
-  transform: rotate(1.6deg);
+  box-shadow: 0 22px 60px rgba(71, 31, 10, 0.28);
 }
 .hero-figure figcaption,
 .chapter-figure figcaption {
@@ -417,6 +285,31 @@ section { padding: var(--space-section) var(--pad-x); }
   text-transform: uppercase;
   color: var(--ink-mute);
   text-align: center;
+}
+
+/* The shared eyebrow, button and focus styles are built for the dark sections
+   (gold on near-black); on the yellow field they restate in brown. */
+.hero .eyebrow { color: var(--merch-brown); }
+.hero-figure figcaption { color: rgba(71, 31, 10, 0.7); }
+.hero :focus-visible { outline-color: var(--merch-brown); }
+
+.hero .btn-primary {
+  background: var(--merch-brown);
+  color: var(--merch-yellow);
+  box-shadow: 0 6px 30px rgba(71, 31, 10, 0.3);
+}
+.hero .btn-primary:hover {
+  background: #5E2A0E;
+  box-shadow: 0 10px 38px rgba(71, 31, 10, 0.42);
+}
+.hero .btn-ghost {
+  color: var(--merch-brown);
+  border-color: rgba(71, 31, 10, 0.35);
+}
+.hero .btn-ghost:hover {
+  color: var(--merch-brown);
+  border-color: var(--merch-brown);
+  background: rgba(71, 31, 10, 0.06);
 }
 
 /* ─── CHAPTERS ─── */
@@ -430,7 +323,20 @@ section { padding: var(--space-section) var(--pad-x); }
   gap: 56px;
   align-items: center;
 }
-.chapter--alt { background: var(--bg-2); }
+/* Chapter II runs dark brown → navy, holds navy behind the arc, then hands
+   a half-mixed navy/green to Chapter III. Tune via the --fade-* stops. */
+.chapter--alt {
+  background: linear-gradient(
+    180deg,
+    var(--fade-brown) 0%,
+    var(--fade-brown) var(--fade-brown-hold),
+    var(--fade-navy)  var(--fade-navy-hold),
+    var(--fade-navy)  var(--fade-navy-end),
+    var(--fade-mid)   100%
+  );
+}
+/* On the navy band the muted tan caption drops to ~1.9:1, so it goes light */
+.chapter--alt .chapter-figure figcaption { color: rgba(255, 255, 255, 0.7); }
 
 .chapter-label {
   font-size: 0.78rem;
@@ -441,10 +347,11 @@ section { padding: var(--space-section) var(--pad-x); }
   margin-bottom: 18px;
 }
 .chapter-title {
-  font-family: var(--serif);
-  font-weight: 800;
-  font-size: clamp(2rem, 4.2vw, 3.2rem);
-  line-height: 1.1;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   margin-bottom: 26px;
 }
 .chapter-body {
@@ -463,15 +370,79 @@ section { padding: var(--space-section) var(--pad-x); }
 /* Client note on the 1938 artifact photo: "make the image lighter" */
 .chapter-figure--artifact img { filter: brightness(1.28) contrast(1.04); }
 
+/* ─── CHAPTER I: statue photo fills the box, white type on a scrim ─── */
+.chapter--origin {
+  position: relative;
+  min-height: clamp(560px, 92vh, 880px);
+  padding: clamp(36px, 6vh, 72px) var(--pad-x) 140px;
+  background: url('assets/statue-brussels.png') center / cover no-repeat;
+}
+/* 30% dark scrim so the white type stays legible over the statue photo */
+.chapter--origin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+/* Both text blocks sit above the scrim */
+.chapter--origin .chapter-copy { position: relative; }
+.chapter--origin .chapter-label,
+.chapter--origin .chapter-title,
+.chapter--origin .chapter-body,
+.origin-caption { color: #FFFFFF; }
+.chapter--origin .chapter-title { max-width: 11em; }
+.origin-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 var(--pad-x) 16px;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.55;
+}
+
+/* ─── CHAPTER III: merch-green panel, dark type ─── */
+/* Picks up Chapter II's half-mixed colour, completes the wash to green above
+   the copy, then fades out to meet the dark manifesto below the figure. */
+.chapter--2026 {
+  background: linear-gradient(
+    180deg,
+    var(--fade-mid)   0%,
+    var(--fade-green) var(--fade-green-in),
+    var(--fade-green) var(--fade-green-end),
+    var(--bg-2)       100%
+  );
+}
+.chapter--2026 .chapter-label { color: rgba(22, 20, 18, 0.68); }
+.chapter--2026 .chapter-title,
+.chapter--2026 .chapter-body { color: var(--bg); }
+.chapter--2026 .chapter-figure figcaption { color: rgba(22, 20, 18, 0.62); }
+/* The chocolate PNG is transparent, so it reads as a green-on-green cutout.
+   Giving the image the manifesto's dark brown turns it into a brown plate
+   sitting on the green page. */
+.chapter--2026 .chapter-figure img { background: var(--bg-2); }
+
 /* ─── TIMELINE (the arch) ─── */
+/* Sits on the pastel navy band, so the dashed arc and its labels go light
+   rather than gold/tan, which muddy out against that background. */
 .timeline {
   max-width: 1000px;
   margin: 96px auto 0;
-  color: var(--gold);
+  color: rgba(255, 255, 255, 0.5);
 }
 .timeline-arc { width: 100%; height: auto; display: block; }
-.timeline-arc circle { fill: var(--gold); }
-.timeline-arc .timeline-node--now { fill: var(--crimson); }
+/* Each dot is a cracking planet in one of the exact merch colours */
+.timeline-planet circle { stroke: rgba(22, 20, 18, 0.45); stroke-width: 1; }
+.planet--1619 circle { fill: var(--merch-white); }
+.planet--1880 circle { fill: var(--merch-yellow); }
+.planet--1933 circle { fill: var(--merch-green); }
+.planet--2026 circle { fill: var(--merch-blue); }
+.planet-cracks {
+  fill: none;
+  stroke: rgba(22, 20, 18, 0.7);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .timeline-labels {
   position: relative;
   list-style: none;
@@ -489,26 +460,31 @@ section { padding: var(--space-section) var(--pad-x); }
 .timeline-labels li:last-child { transform: translateX(-90%); text-align: right; }
 .timeline-labels strong {
   display: block;
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--ink);
 }
 .timeline-labels span {
   font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: rgba(255, 255, 255, 0.72);
 }
-.timeline-now strong { color: var(--crimson); }
+.timeline-now strong { color: var(--merch-blue); }
 .timeline-caption {
   margin-top: 28px;
+  margin-inline: auto;
+  max-width: 22em;
   text-align: center;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: var(--ink-soft);
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.9vw, 1.35rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ink);
 }
+/* Stops the caption breaking mid-word at the hyphen in "Geo-political" */
+.nowrap { white-space: nowrap; }
 
 /* ─── MANIFESTO ─── */
 .manifesto {
@@ -524,13 +500,13 @@ section { padding: var(--space-section) var(--pad-x); }
   text-align: center;
 }
 .manifesto-quote p {
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-family: var(--sans);
+  font-size: clamp(1.35rem, 3vw, 2.15rem);
   font-weight: 600;
   line-height: 1.45;
   color: var(--ink);
 }
-.manifesto-quote em { font-style: italic; color: var(--gold); }
+.manifesto-quote em { font-style: normal; font-weight: 700; color: var(--gold); }
 .manifesto-quote cite {
   display: block;
   margin-top: 34px;
@@ -576,9 +552,9 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   margin-bottom: 12px;
 }
 .join-card-title {
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 400;
   margin-bottom: 10px;
   color: var(--ink);
 }
@@ -635,9 +611,9 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 /* ─── ORDER ─── */
 .order-sub {
   margin-top: 18px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+  letter-spacing: 0.02em;
   color: var(--ink-soft);
 }
 .shirt-grid {
@@ -768,6 +744,9 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 }
 .footer-nav a:hover { color: var(--gold); }
 .footer-donate { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 20px; }
+.footer-contact { font-size: 0.92rem; margin-bottom: 20px; }
+.footer-contact a { color: var(--gold); text-decoration: none; }
+.footer-contact a:hover { text-decoration: underline; }
 .footer-copy {
   font-size: 0.76rem;
   letter-spacing: 0.16em;
@@ -833,39 +812,6 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
   .join-grid { grid-template-columns: 1.2fr 0.8fr; }
   .shirt-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-/* ============================================================
-   DESKTOP ≥ 1080px — persistent collapsible sidebar
-   ============================================================ */
-@media (min-width: 1080px) {
-  .mobile-bar { display: none; }
-  .drawer-close { display: none; }
-  .drawer-overlay { display: none; }
-
-  .sidebar {
-    transform: none;
-    width: var(--sidebar-w);
-  }
-  .main { margin-left: var(--sidebar-w); transition: margin-left 0.3s var(--ease); }
-  .hero { min-height: 100vh; }
-
-  .collapse-toggle { display: flex; }
-
-  /* Collapsed rail: numbers stay as wayfinding, labels fold away */
-  body.nav-collapsed .sidebar { width: var(--sidebar-w-rail); }
-  body.nav-collapsed .main { margin-left: var(--sidebar-w-rail); }
-  body.nav-collapsed .sidebar-inner { padding: 24px 14px; }
-  body.nav-collapsed .nav-text,
-  body.nav-collapsed .nav-sub,
-  body.nav-collapsed .sidebar-cta,
-  body.nav-collapsed .wordmark-full { display: none; }
-  body.nav-collapsed .wordmark-mono { display: inline; }
-  body.nav-collapsed .nav-link { justify-content: center; padding: 10px 0; }
-  body.nav-collapsed .nav-num { width: auto; }
-  body.nav-collapsed .collapse-toggle { align-self: center; }
-  body.nav-collapsed .collapse-toggle svg { transform: rotate(180deg); }
-  body.nav-collapsed .sidebar-head { justify-content: center; }
 }
 
 /* ─── SMALL PHONES ─── */
