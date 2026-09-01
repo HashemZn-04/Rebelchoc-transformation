@@ -25,32 +25,26 @@
   --merch-brown:  #471F0A;  /* the print ink the merch sets its type in */
 
   /* ═══ BACKDROP FADE — ADJUST THE STORY'S COLOUR FLOW HERE ═══
-     The page washes dark brown → pastel navy (the band the arc sits on)
-     → merch green → back to dark for the manifesto. The navy→green half
-     of it straddles the join between Chapter II and Chapter III, which is
-     what buys the fade enough room to look smooth.
+     The 1938 section is pastel navy edge to edge; it then washes into the 2026
+     section's merch green. That single wash straddles the join between the two,
+     which is what buys it enough room to look smooth.
 
      The COLOURS: */
-  --fade-brown: var(--bg-2);        /* Chapter II opens in dark brown   */
-  --fade-navy:  #636E95;            /* pastel navy, behind the arc      */
-  --fade-green: var(--merch-green); /* Chapter III                      */
+  --fade-navy:  #636E95;            /* 1938, the arc's field            */
+  --fade-green: var(--merch-green); /* 2026                             */
   --fade-mid:   #5EB584;            /* the exact midpoint of navy and green.
-                                       Chapter II ends on it and Chapter III
-                                       picks it up, so the join is invisible.
-                                       Change the two colours above and this
+                                       1938 ends on it and 2026 picks it up,
+                                       so the join is invisible.
+                                       Change either colour above and this
                                        must be re-mixed to match, or a seam
                                        will appear between the sections. */
 
-  /* The STOPS, each a percentage of its own chapter's height. Raise a value
-     to push that colour further down. The limits worth knowing: inside
-     Chapter II the arc occupies 65-82% and its caption 89-93%, so the navy
-     has to be solid across all of that; inside Chapter III the copy starts
-     at 12%, so the green has to have fully arrived by then. */
-  --fade-brown-hold: 50%;  /* Chapter II stays pure brown down to here      */
-  --fade-navy-hold:  90%;  /* ...is fully navy from here (arc sits below)   */
-  --fade-navy-end:   70%;  /* ...holds navy past the caption, then washes   */
-  --fade-green-in:   40%;  /* Chapter III completes the wash to green here  */
-  --fade-green-end:  60%;  /* ...stays green, then fades to the manifesto   */
+  /* The STOPS, each a percentage of its own section's height. Raise a value to
+     push the wash further down. The 1938 caption runs to about 93% of its
+     height, so the navy must hold past that; the 2026 copy starts around
+     12%, so the green must have fully arrived by then. */
+  --fade-navy-end: 94%;  /* 1938 holds navy to here, then washes out */
+  --fade-green-in: 10%;  /* 2026 completes the wash to green here    */
 
   /* Flat grotesque type, matching the merch print ("SAVE THE WORLD") */
   --display: 'Archivo Black', 'Arial Black', 'Helvetica Neue', Helvetica, sans-serif;
@@ -154,25 +148,6 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .wordmark em { font-style: normal; color: var(--gold); }
 
-/* ─── IMAGE PLACEHOLDERS ───
-   Swap each <span class="img-placeholder"> for a real <img> when the
-   t-shirt mockups are ready - the HTML comment above each one names the file. */
-.img-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(248, 245, 242, 0.03);
-  border: 2px dashed var(--line);
-  border-radius: 8px;
-  color: var(--ink-mute);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 16px;
-}
-
 /* ============================================================
    MAIN LAYOUT
    ============================================================ */
@@ -200,84 +175,57 @@ section { padding: var(--space-section) var(--pad-x); }
   color: var(--ink);
 }
 
-/* ─── HERO (F-pattern: copy left-aligned, first) ─── */
-/* A flat merch-yellow field printed in the merch's brown ink, like the poster.
-   The gold radial glows this section used to carry were built for a dark
-   background and only muddy the yellow, so they are gone. */
+/* ─── HERO ─── */
+/* A poster: flat merch-yellow field, artwork dead centre, slogan directly
+   beneath it in the merch's brown ink. Every other element this section used
+   to carry (eyebrow, lead, buttons, year pills, caption) has been stripped. */
 .hero {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
   background: var(--merch-yellow);
   color: var(--merch-brown);
+  /* Its own padding, far tighter than the section default, so the poster
+     below can claim most of the viewport height without pushing past it. */
+  padding: clamp(24px, 4vh, 60px) var(--pad-x);
 }
-.hero-grid {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-  align-items: center;
-}
-.hero-title {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(3.2rem, 8.4vw, 6.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  margin-bottom: 28px;
-}
-.hero-title .accent { color: var(--merch-brown); font-style: normal; }
-.hero-lead {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: rgba(71, 31, 10, 0.82);
-  max-width: 34em;
-  margin-bottom: 40px;
-}
-.hero-lead strong { color: var(--merch-brown); }
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 52px;
-}
-.hero-marks {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-}
-.hero-marks a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 8px 18px;
-  border: 1px solid rgba(71, 31, 10, 0.3);
-  border-radius: 100px;
-  color: rgba(71, 31, 10, 0.75);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-decoration: none;
-  transition: color 0.15s, border-color 0.15s;
-}
-.hero-marks a:hover { color: var(--merch-brown); border-color: var(--merch-brown); }
-
+/* The poster runs as large as the viewport allows in BOTH directions while
+   keeping its own proportions - `width: auto` against a height cap means it
+   is never stretched, only bounded. */
 .hero-figure {
-  justify-self: center;
-  max-width: 380px;
-  position: relative;
+  width: 100%;
+  max-width: min(94vw, 820px);
+  margin-bottom: clamp(16px, 2.8vh, 40px);
 }
 /* Hangs straight, no tilt. The shadow is brown-tinted and lighter, because a
    heavy black one goes muddy against the yellow. */
 .hero-figure img {
+  width: auto;
+  max-width: 100%;
+  /* The height cap is what keeps "Laugh | Rebel | Resist" on the first screen.
+     88vh is the poster plus its own margins; the 5.2rem subtracted is the
+     slogan, whose size is capped in rem and so eats a larger share of a short
+     viewport than of a tall one. Between them the hero lands at ~95vh at every
+     height, leaving the slogan visible without a scroll. Raise 88vh and the
+     slogan starts dropping below the fold on short laptops first. */
+  max-height: calc(88vh - 5.2rem);
+  margin-inline: auto;
   border-radius: var(--radius);
   box-shadow: 0 22px 60px rgba(71, 31, 10, 0.28);
 }
-.hero-figure figcaption,
+.hero-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
 .chapter-figure figcaption {
   margin-top: 18px;
   font-size: 0.82rem;
@@ -285,31 +233,6 @@ section { padding: var(--space-section) var(--pad-x); }
   text-transform: uppercase;
   color: var(--ink-mute);
   text-align: center;
-}
-
-/* The shared eyebrow, button and focus styles are built for the dark sections
-   (gold on near-black); on the yellow field they restate in brown. */
-.hero .eyebrow { color: var(--merch-brown); }
-.hero-figure figcaption { color: rgba(71, 31, 10, 0.7); }
-.hero :focus-visible { outline-color: var(--merch-brown); }
-
-.hero .btn-primary {
-  background: var(--merch-brown);
-  color: var(--merch-yellow);
-  box-shadow: 0 6px 30px rgba(71, 31, 10, 0.3);
-}
-.hero .btn-primary:hover {
-  background: #5E2A0E;
-  box-shadow: 0 10px 38px rgba(71, 31, 10, 0.42);
-}
-.hero .btn-ghost {
-  color: var(--merch-brown);
-  border-color: rgba(71, 31, 10, 0.35);
-}
-.hero .btn-ghost:hover {
-  color: var(--merch-brown);
-  border-color: var(--merch-brown);
-  background: rgba(71, 31, 10, 0.06);
 }
 
 /* ─── CHAPTERS ─── */
@@ -323,29 +246,20 @@ section { padding: var(--space-section) var(--pad-x); }
   gap: 56px;
   align-items: center;
 }
-/* Chapter II runs dark brown → navy, holds navy behind the arc, then hands
-   a half-mixed navy/green to Chapter III. Tune via the --fade-* stops. */
+/* The 1938 section is navy edge to edge now, the colour carrying all the way up
+   from the arch. Only the tail still fades, handing a half-mixed navy/green to
+   the 2026 section so the join between the two stays invisible. */
 .chapter--alt {
   background: linear-gradient(
     180deg,
-    var(--fade-brown) 0%,
-    var(--fade-brown) var(--fade-brown-hold),
-    var(--fade-navy)  var(--fade-navy-hold),
-    var(--fade-navy)  var(--fade-navy-end),
-    var(--fade-mid)   100%
+    var(--fade-navy) 0%,
+    var(--fade-navy) var(--fade-navy-end),
+    var(--fade-mid)  100%
   );
 }
-/* On the navy band the muted tan caption drops to ~1.9:1, so it goes light */
+/* Gold and muted tan both fall under 2.3:1 on the navy, so they go light */
 .chapter--alt .chapter-figure figcaption { color: rgba(255, 255, 255, 0.7); }
 
-.chapter-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
 .chapter-title {
   font-family: var(--display);
   font-weight: 400;
@@ -354,72 +268,136 @@ section { padding: var(--space-section) var(--pad-x); }
   letter-spacing: -0.02em;
   margin-bottom: 26px;
 }
+/* Set a size larger than the other chapter titles, over the four hard line
+   breaks in the markup. The upper bound is what "AGAINST BLINDFOLDED" - the
+   longest of the four lines - can hold on one line inside the copy column;
+   widening that column (see the tablet block) is what buys the size. */
+.chapter--alt .chapter-title {
+  font-size: clamp(1.5rem, 4.2vw, 3.3rem);
+  line-height: 1.06;
+}
 .chapter-body {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   color: var(--ink-soft);
   max-width: 36em;
 }
-.chapter-body + .chapter-body { margin-top: 18px; }
+.chapter-body + .chapter-body { margin-top: 22px; }
 .chapter-body strong { color: var(--ink); }
+/* The manifesto sits in a .chapter-body, so its emphasis renders as plain body
+   text: Archivo has no true italic, and the point is uniform styling. */
+.chapter-body em { font-style: normal; font-weight: inherit; color: inherit; }
 
 .chapter-figure { justify-self: center; width: 100%; max-width: 520px; }
 .chapter-figure img {
   border-radius: var(--radius);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--line-soft);
 }
-/* Client note on the 1938 artifact photo: "make the image lighter" */
-.chapter-figure--artifact img { filter: brightness(1.28) contrast(1.04); }
+/* The 1938 PNG is transparent, so the rounded ring and box shadow were drawing
+   a frame around nothing: its inside was just the page colour showing through.
+   The object sits directly on the navy, and its shadow follows the ashtray's
+   own silhouette instead of a rectangle it doesn't have.
+   (The brightness lift is the client's earlier "make the image lighter".) */
+.chapter--alt .chapter-figure img {
+  border-radius: 0;
+  box-shadow: none;
+}
+.chapter-figure--artifact img {
+  filter: brightness(1.28) contrast(1.04) drop-shadow(0 18px 30px rgba(0, 0, 0, 0.35));
+}
 
-/* ─── CHAPTER I: statue photo fills the box, white type on a scrim ─── */
+/* ─── ORIGIN: the whole statue photo, white type on a scrim ─── */
+/* The section takes the photo's own 1418:1114 proportions, so `cover` fits it
+   edge to edge with nothing cropped: the statue is in frame head to plinth and
+   the bare wall to its right is left free for the title. min-height only bites
+   on narrow screens, where the sides crop instead - the 32% x-position keeps
+   the statue (which sits across 12-52% of the frame) fully inside that crop. */
 .chapter--origin {
   position: relative;
-  min-height: clamp(560px, 92vh, 880px);
-  padding: clamp(36px, 6vh, 72px) var(--pad-x) 140px;
-  background: url('assets/statue-brussels.png') center / cover no-repeat;
+  aspect-ratio: 1418 / 1114;
+  min-height: clamp(460px, 68vh, 620px);
+  padding: 0;
+  background: #6F6F69 url('assets/statue-brussels-high-res.jpg') 32% center / cover no-repeat;
 }
-/* 30% dark scrim so the white type stays legible over the statue photo */
+/* Scrim, weighted where the type actually lands: a band under the top, a
+   heavier one along the base, and a wash into the bright right-hand wall. */
 .chapter--origin::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.44) 0%, rgba(0, 0, 0, 0.1) 34%, rgba(0, 0, 0, 0.1) 56%, rgba(0, 0, 0, 0.58) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0.32) 100%);
   pointer-events: none;
 }
 /* Both text blocks sit above the scrim */
-.chapter--origin .chapter-copy { position: relative; }
-.chapter--origin .chapter-label,
 .chapter--origin .chapter-title,
 .chapter--origin .chapter-body,
 .origin-caption { color: #FFFFFF; }
-.chapter--origin .chapter-title { max-width: 11em; }
+/* Title: hard right, high up, in the empty wall beside the statue's head */
+.chapter--origin .chapter-copy {
+  position: absolute;
+  top: clamp(26px, 6%, 96px);
+  right: var(--pad-x);
+  max-width: min(52%, 640px);
+  text-align: right;
+}
+.chapter--origin .chapter-title {
+  font-size: clamp(1.5rem, 4.6vw, 4.4rem);
+  line-height: 1.02;
+  margin-bottom: 0;
+  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.55);
+}
+/* Caption: down at the statue's feet (they sit at ~89% of the frame), broken
+   over two lines by the <br> in the markup. */
 .origin-caption {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 0 var(--pad-x) 16px;
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-  line-height: 1.55;
+  left: 0; right: 0;
+  bottom: clamp(16px, 5.5%, 68px);
+  padding: 0 var(--pad-x);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
+/* The story's running voice: the caption over the statue photo and the 2026
+   panel's two paragraphs share a family, weight and rhythm, so the copy reads
+   as one text carried across the page. */
+.origin-caption,
+.chapter--2026 .chapter-body {
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+/* The 2026 panel's two paragraphs are one voice: identical family, size and
+   rhythm, separated only by weight. The bold modifier has to be scoped to the
+   section to match the specificity of the `font-weight: 400` above it -
+   as a bare `.chapter-body--bold` it loses and never renders. */
+.chapter--2026 .chapter-body { font-size: clamp(1.3rem, 2.1vw, 1.75rem); }
+.chapter--2026 .chapter-body--bold { font-weight: 700; }
+/* The caption runs the full width of the photo and has to hold to the two
+   lines its <br> sets, so it is sized off the viewport rather than off the
+   2026 panel. Below ~650px it wraps further, which is the intended fallback. */
+.origin-caption { font-size: clamp(0.82rem, 1.42vw, 1.5rem); }
 
-/* ─── CHAPTER III: merch-green panel, dark type ─── */
-/* Picks up Chapter II's half-mixed colour, completes the wash to green above
-   the copy, then fades out to meet the dark manifesto below the figure. */
+/* ─── 2026: merch-green panel, dark type, manifesto included ─── */
+/* Picks up the 1938 section's half-mixed colour and finishes the wash above
+   the copy, then holds green all the way to its edge, where the yellow Join
+   section takes over. */
 .chapter--2026 {
   background: linear-gradient(
     180deg,
     var(--fade-mid)   0%,
     var(--fade-green) var(--fade-green-in),
-    var(--fade-green) var(--fade-green-end),
-    var(--bg-2)       100%
+    var(--fade-green) 100%
   );
 }
-.chapter--2026 .chapter-label { color: rgba(22, 20, 18, 0.68); }
-.chapter--2026 .chapter-title,
 .chapter--2026 .chapter-body { color: var(--bg); }
 .chapter--2026 .chapter-figure figcaption { color: rgba(22, 20, 18, 0.62); }
-/* The chocolate PNG is transparent, so it reads as a green-on-green cutout.
-   Giving the image the manifesto's dark brown turns it into a brown plate
-   sitting on the green page. */
-.chapter--2026 .chapter-figure img { background: var(--bg-2); }
+/* Same reasoning as the 1938 photo: the print's own field is this exact green,
+   so a ring and shadow framed a rectangle whose inside matched the page. The
+   artwork now sits straight on it, as the poster does in the hero. */
+.chapter--2026 .chapter-figure img {
+  border-radius: 0;
+  box-shadow: none;
+}
 
 /* ─── TIMELINE (the arch) ─── */
 /* Sits on the pastel navy band, so the dashed arc and its labels go light
@@ -446,8 +424,8 @@ section { padding: var(--space-section) var(--pad-x); }
 .timeline-labels {
   position: relative;
   list-style: none;
-  height: 74px;
-  margin-top: 10px;
+  height: 104px;
+  margin-top: 14px;
 }
 .timeline-labels li {
   position: absolute;
@@ -461,64 +439,49 @@ section { padding: var(--space-section) var(--pad-x); }
 .timeline-labels strong {
   display: block;
   font-family: var(--display);
-  font-size: 1.3rem;
+  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
   font-weight: 400;
+  line-height: 1.15;
   color: var(--ink);
 }
+/* The names carry the arch's point, so they are set solid white and bold
+   rather than the half-opacity caption grey they used to be, with a soft
+   shadow to lift them off the navy. */
 .timeline-labels span {
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
+  display: block;
+  margin-top: 2px;
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #FFFFFF;
+  text-shadow: 0 1px 10px rgba(22, 20, 18, 0.45);
 }
 .timeline-now strong { color: var(--merch-blue); }
 .timeline-caption {
-  margin-top: 28px;
+  margin-top: 36px;
   margin-inline: auto;
   max-width: 22em;
   text-align: center;
   font-family: var(--display);
-  font-size: clamp(1rem, 1.9vw, 1.35rem);
-  line-height: 1.3;
-  letter-spacing: -0.005em;
+  font-size: clamp(1.55rem, 2.9vw, 2.55rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--ink);
-}
-/* Stops the caption breaking mid-word at the hyphen in "Geo-political" */
-.nowrap { white-space: nowrap; }
-
-/* ─── MANIFESTO ─── */
-.manifesto {
-  background:
-    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(217, 164, 65, 0.06) 0%, transparent 70%),
-    var(--bg-2);
-  border-top: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
-}
-.manifesto-quote {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-.manifesto-quote p {
-  font-family: var(--sans);
-  font-size: clamp(1.35rem, 3vw, 2.15rem);
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--ink);
-}
-.manifesto-quote em { font-style: normal; font-weight: 700; color: var(--gold); }
-.manifesto-quote cite {
-  display: block;
-  margin-top: 34px;
-  font-family: var(--sans);
-  font-style: normal;
-  font-size: 0.85rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
 }
 
 /* ─── HOW TO JOIN ─── */
+/* Merch-yellow field in brown ink, matching the hero, and set a size larger
+   than the rest of the page. Everything here restates the dark-section
+   defaults (gold on near-black), which would be unreadable on the yellow. */
+.join {
+  background: var(--merch-yellow);
+  color: var(--merch-brown);
+}
+.join .eyebrow,
+.join .section-title { color: var(--merch-brown); }
+.join .section-title { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
+.join :focus-visible { outline-color: var(--merch-brown); }
 .join-grid {
   max-width: 1200px;
   margin: 0 auto;
@@ -534,87 +497,72 @@ section { padding: var(--space-section) var(--pad-x); }
 }
 .join-card {
   display: block;
-  background: var(--bg-card);
-  border: 1px solid var(--line-soft);
+  background: rgba(71, 31, 10, 0.07);
+  border: 1px solid rgba(71, 31, 10, 0.22);
   border-radius: var(--radius);
-  padding: 30px 30px 28px;
+  padding: 34px 34px 32px;
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s, transform 0.2s var(--ease);
 }
-a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+a.join-card:hover { border-color: var(--merch-brown); transform: translateY(-3px); }
 .join-step {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.24em;
-  color: var(--gold);
+  color: rgba(71, 31, 10, 0.6);
   margin-bottom: 12px;
 }
 .join-card-title {
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 400;
-  margin-bottom: 10px;
-  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  color: var(--merch-brown);
 }
-.join-card-text { color: var(--ink-soft); font-size: 1rem; max-width: 42em; }
+.join-card-text {
+  color: rgba(71, 31, 10, 0.88);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  max-width: 42em;
+}
 .join-card-link {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin-top: 6px;
+  margin-top: 8px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   letter-spacing: 0.06em;
-  color: var(--gold);
+  color: var(--merch-brown);
 }
-.join-figure { justify-self: center; max-width: 360px; }
+/* The black print is now cropped to the artwork itself, the same framing the
+   hero poster carries, so it is no longer the 9:16 slab that had to be held
+   back to 300px to stop it out-running the three cards beside it. */
+.join-figure { justify-self: center; max-width: 380px; }
 .join-figure img {
   border-radius: var(--radius);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--line-soft);
+  box-shadow: 0 22px 60px rgba(71, 31, 10, 0.3);
   transform: rotate(-1.4deg);
 }
 
-/* ─── CHOCOLATE ─── */
-.chocolate { background: var(--bg-2); border-top: 1px solid var(--line-soft); }
-.chocolate-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  align-items: center;
-}
-.chocolate-figure {
-  position: relative;
-  justify-self: center;
-  max-width: 560px;
-}
-.chocolate-figure::before {
-  content: '';
-  position: absolute;
-  inset: -10% -6%;
-  background: radial-gradient(ellipse 60% 55% at 62% 50%, rgba(217, 164, 65, 0.14) 0%, transparent 70%);
-  pointer-events: none;
-}
-.chocolate-figure img { position: relative; }
-.chocolate-copy .section-title { margin-bottom: 26px; }
-.chocolate-exclusive {
-  margin-top: 22px;
-  padding: 20px 24px;
-  border-left: 3px solid var(--gold);
-  background: rgba(217, 164, 65, 0.07);
-  border-radius: 0 8px 8px 0;
-}
-
 /* ─── ORDER ─── */
+/* The reverse of the hero's scheme: brown field, yellow ink. */
+.order {
+  background: var(--merch-brown);
+  color: var(--merch-yellow);
+}
+.order .eyebrow,
+.order .section-title,
+.order .pick-note { color: var(--merch-yellow); }
+.order :focus-visible { outline-color: var(--merch-yellow); }
 .order-sub {
   margin-top: 18px;
   font-weight: 600;
   font-size: clamp(1.05rem, 1.9vw, 1.3rem);
   letter-spacing: 0.02em;
-  color: var(--ink-soft);
+  color: rgba(251, 232, 16, 0.8);
 }
 .shirt-grid {
   max-width: 1200px;
@@ -624,8 +572,8 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   gap: 18px;
 }
 .shirt-card {
-  background: var(--bg-card);
-  border: 1px solid var(--line-soft);
+  background: rgba(251, 232, 16, 0.06);
+  border: 1px solid rgba(251, 232, 16, 0.22);
   border-radius: var(--radius);
   padding: 16px;
   cursor: pointer;
@@ -634,9 +582,18 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   text-align: left;
   transition: border-color 0.2s, transform 0.2s var(--ease);
 }
-.shirt-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-.shirt-card.is-selected { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
-.shirt-placeholder { aspect-ratio: 4 / 5; width: 100%; margin-bottom: 14px; }
+.shirt-card:hover { border-color: var(--merch-yellow); transform: translateY(-3px); }
+.shirt-card.is-selected { border-color: var(--merch-yellow); box-shadow: 0 0 0 1px var(--merch-yellow); }
+/* The thumbnails are pre-framed to 480x640, so the ratio here only guards
+   against a swapped-in file of another shape; `cover` trims its flat field
+   rather than letting a card go a different height from its neighbours. */
+.shirt-thumb {
+  width: 100%;
+  aspect-ratio: 480 / 640;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
 .shirt-name {
   display: flex;
   align-items: center;
@@ -645,7 +602,7 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
-  color: var(--ink);
+  color: var(--merch-yellow);
 }
 .swatch {
   width: 15px; height: 15px;
@@ -654,12 +611,15 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
 }
+/* The black tee's dot needs a light ring - the shared dark one disappears
+   into it, leaving the swatch reading as a hole rather than a colour. */
+.shirt-card--dark .swatch { box-shadow: inset 0 0 0 1px rgba(251, 232, 16, 0.55); }
 
 .order-panel {
   max-width: 620px;
   margin: 0 auto;
-  background: var(--bg-card);
-  border: 1px solid var(--line-soft);
+  background: rgba(251, 232, 16, 0.06);
+  border: 1px solid rgba(251, 232, 16, 0.2);
   border-radius: 14px;
   padding: clamp(28px, 4vw, 44px);
 }
@@ -676,7 +636,7 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: rgba(251, 232, 16, 0.68);
   margin-bottom: 12px;
 }
 .size-row { display: flex; gap: 10px; }
@@ -684,24 +644,34 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   min-width: 56px;
   min-height: 52px;
   background: transparent;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(251, 232, 16, 0.3);
   border-radius: 7px;
-  color: var(--ink);
+  color: var(--merch-yellow);
   font-family: var(--sans);
   font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
-.size-btn:hover { border-color: var(--gold); }
+.size-btn:hover { border-color: var(--merch-yellow); }
 .size-btn.is-selected {
-  border-color: var(--gold);
-  background: rgba(217, 164, 65, 0.12);
-  color: var(--gold);
+  border-color: var(--merch-yellow);
+  background: rgba(251, 232, 16, 0.15);
+  color: var(--merch-yellow);
 }
-.pick-note { font-weight: 700; font-size: 1.05rem; color: var(--ink); }
-.pick-hint { font-size: 0.85rem; color: var(--ink-mute); margin-top: 4px; }
+.pick-note { font-weight: 700; font-size: 1.05rem; }
+.pick-hint { font-size: 0.85rem; color: rgba(251, 232, 16, 0.65); margin-top: 4px; }
 
+/* Yellow fill on the brown field, the hero's primary button inverted */
+.order .btn-primary {
+  background: var(--merch-yellow);
+  color: var(--merch-brown);
+  box-shadow: 0 6px 30px rgba(251, 232, 16, 0.2);
+}
+.order .btn-primary:hover {
+  background: #FFF04A;
+  box-shadow: 0 10px 38px rgba(251, 232, 16, 0.3);
+}
 .btn-buy { width: 100%; min-height: 60px; font-size: 1.05rem; }
 
 .order-footnote {
@@ -709,7 +679,7 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.8;
-  color: var(--ink-mute);
+  color: rgba(251, 232, 16, 0.7);
 }
 
 /* ─── FOOTER ─── */
@@ -793,6 +763,7 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.15s; }
 .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.25s; }
 .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.45s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -805,20 +776,33 @@ a.join-card:hover { border-color: var(--gold); transform: translateY(-3px); }
    TABLET ≥ 720px
    ============================================================ */
 @media (min-width: 720px) {
-  .chapter-grid,
-  .chocolate-grid { grid-template-columns: 1.05fr 0.95fr; gap: clamp(48px, 6vw, 96px); }
+  .chapter-grid { grid-template-columns: 1.05fr 0.95fr; gap: clamp(48px, 6vw, 96px); }
   .chapter-grid--flip .chapter-copy { order: 2; }
   .chapter-grid--flip .chapter-figure { order: 1; }
-  .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
+  /* Wider copy column than the other chapters, so the enlarged 1938 title
+     keeps "AGAINST BLINDFOLDED" on the single line its <br>s intend */
+  .chapter--alt .chapter-grid { grid-template-columns: 0.7fr 1.3fr; }
   .join-grid { grid-template-columns: 1.2fr 0.8fr; }
-  .shirt-grid { grid-template-columns: repeat(4, 1fr); }
+  /* Five colours: three across here, all five on one row once there is
+     room for them without squeezing the names under the swatches. */
+  .shirt-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
+   DESKTOP ≥ 1040px
+   ============================================================ */
+@media (min-width: 1040px) {
+  .shirt-grid { grid-template-columns: repeat(5, 1fr); }
+  /* Five cards to a row leaves each name about 140px at this width, so the
+     label steps down a little to keep "Liberation Green" on one line. */
+  .shirt-name { font-size: clamp(0.78rem, 0.92vw, 0.95rem); gap: 7px; }
 }
 
 /* ─── SMALL PHONES ─── */
 @media (max-width: 420px) {
-  .hero-actions .btn { width: 100%; }
-  .timeline-labels strong { font-size: 1.1rem; }
-  .timeline-labels span { font-size: 0.66rem; }
+  .timeline-labels strong { font-size: 1.25rem; }
+  .timeline-labels span { font-size: 0.72rem; letter-spacing: 0.05em; }
+  .timeline-labels { height: 84px; }
   .shirt-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .order-row { flex-direction: column; gap: 24px; }
 }

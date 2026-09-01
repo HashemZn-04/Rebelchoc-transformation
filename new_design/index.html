@@ -19,48 +19,31 @@
 <main class="main" id="main">
 
   <!-- ══════════════ HERO ══════════════ -->
+  <!-- Poster layout: artwork dead centre, slogan directly beneath it. No other copy. -->
   <section class="hero" id="home">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow reveal">Brussels, Belgium · A tradition of defiance since 1619</p>
-        <h1 class="hero-title reveal delay-1">Laugh.<br>Rebel.<br><span class="accent">Resist.</span></h1>
-        <p class="hero-lead reveal delay-2">Manneken Pis has returned as the symbol of world resistance. Wear the tee, share the humour, and join the <strong>World Liberation Day</strong>.</p>
-        <div class="hero-actions reveal delay-3">
-          <a href="#order" class="btn btn-primary btn-lg">Shop the Rebellion</a>
-          <a href="#story" class="btn btn-ghost btn-lg">Read the story</a>
-        </div>
-        <ul class="hero-marks reveal delay-4" aria-label="Three chapters">
-          <li><a href="#chapter-1621">1621</a></li>
-          <li><a href="#chapter-1938">1938</a></li>
-          <li><a href="#chapter-2026">2026</a></li>
-        </ul>
-      </div>
-      <figure class="hero-figure reveal delay-2">
-        <img src="assets/hero-poster.png" alt="World Liberation Day poster: the Manneken Pis statue urinating into a carved ashtray bearing a politician's face, with the words Save the World." width="416" height="533">
-        <figcaption>The World Liberation Day · limited edition</figcaption>
-      </figure>
-    </div>
+    <figure class="hero-figure reveal">
+      <img src="assets/hero-poster.jpg" alt="World Liberation Day poster: the Manneken Pis statue urinating into a carved ashtray bearing a politician's face, with the words Save the World." width="1100" height="1456" fetchpriority="high">
+    </figure>
+    <h1 class="hero-title reveal delay-1">Laugh | Rebel | Resist</h1>
   </section>
 
   <!-- ══════════════ THE STORY ══════════════ -->
   <div id="story" class="story-anchor" aria-hidden="true"></div>
 
-  <!-- Chapter I - 1621 · statue photo fills the box, white type on a scrim -->
-  <section class="chapter chapter--origin" id="chapter-1621">
+  <!-- Origin · the whole statue is in frame; the title sits in the empty wall
+       to its right and the caption drops to the level of the statue's feet -->
+  <section class="chapter chapter--origin" id="origin">
     <div class="chapter-copy reveal">
-      <p class="chapter-label">Chapter I · 1621</p>
-      <h2 class="chapter-title">The most renowned symbol of rebellion</h2>
-      <p class="chapter-body">A small bronze boy with an irreverent answer to every empire that ever marched past him.</p>
+      <h2 class="chapter-title">THE MOST<br>RENOWNED<br>SYMBOL OF<br>RESISTANCE</h2>
     </div>
-    <p class="origin-caption reveal delay-2">Since the 14th century, Manneken Pis has stood in the heart of Brussels as the world's most renowned art symbol of defiance rebellion, resistance, rejection, and satirical humour.</p>
+    <p class="origin-caption reveal delay-2">Since the 14th century, Manneken Pis has stood in the heart of Brussels as the world's most<br>renowned art symbol of defiance rebellion, resistance, rejection, and satirical humour.</p>
   </section>
 
-  <!-- Chapter II - 1938 -->
-  <section class="chapter chapter--alt" id="chapter-1938">
+  <!-- 1938 · the ashtray -->
+  <section class="chapter chapter--alt" id="defiance">
     <div class="chapter-grid chapter-grid--flip">
       <div class="chapter-copy reveal">
-        <p class="chapter-label">Chapter II · 1938</p>
-        <h2 class="chapter-title">He never fails against blindfolded authorities</h2>
+        <h2 class="chapter-title">MANNEKEN PIS<br>NEVER FAILS<br>AGAINST BLINDFOLDED<br>AUTHORITIES</h2>
       </div>
       <figure class="chapter-figure chapter-figure--artifact reveal delay-2">
         <img src="assets/ashtray-1938.png" alt="A 1938 Belgian bronze ashtray: a small Manneken Pis figure standing over a caricatured dictator's face cast in the bowl." loading="lazy" width="600" height="769">
@@ -72,8 +55,8 @@
     <div class="timeline reveal" role="group" aria-label="Timeline of blindfolded leaders Manneken Pis has outlasted">
       <svg class="timeline-arc" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <defs>
-          <clipPath id="planet-clip"><circle cx="0" cy="0" r="23"/></clipPath>
-          <clipPath id="planet-clip-lg"><circle cx="0" cy="0" r="26"/></clipPath>
+          <clipPath id="planet-clip"><circle cx="0" cy="0" r="34"/></clipPath>
+          <clipPath id="planet-clip-lg"><circle cx="0" cy="0" r="38"/></clipPath>
           <!-- One shared crack network, rotated per planet so each fracture reads unique -->
           <g id="planet-cracks">
             <path d="M -18 2 L -11 0 L -6 4 L -1 -2 L 6 1 L 12 -3 L 18 -1"/>
@@ -84,22 +67,22 @@
             <path d="M -11 0 L -14 -6"/>
           </g>
         </defs>
-        <path d="M 32 208 Q 500 10 968 208" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 7" opacity="0.55"/>
-        <g class="timeline-planet planet--1619" transform="translate(32 208)">
-          <circle r="23"/>
-          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="scale(1.2)"/></g>
+        <path d="M 44 196 Q 500 8 956 196" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="10 11" opacity="0.6"/>
+        <g class="timeline-planet planet--1619" transform="translate(44 196)">
+          <circle r="34"/>
+          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="scale(1.8)"/></g>
         </g>
-        <g class="timeline-planet planet--1880" transform="translate(340 122)">
-          <circle r="23"/>
-          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="rotate(100) scale(1.2)"/></g>
+        <g class="timeline-planet planet--1880" transform="translate(345 113)">
+          <circle r="34"/>
+          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="rotate(100) scale(1.8)"/></g>
         </g>
-        <g class="timeline-planet planet--1933" transform="translate(660 122)">
-          <circle r="23"/>
-          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="rotate(205) scale(1.2)"/></g>
+        <g class="timeline-planet planet--1933" transform="translate(655 113)">
+          <circle r="34"/>
+          <g class="planet-cracks" clip-path="url(#planet-clip)"><use href="#planet-cracks" transform="rotate(205) scale(1.8)"/></g>
         </g>
-        <g class="timeline-planet planet--2026" transform="translate(968 208)">
-          <circle r="26"/>
-          <g class="planet-cracks" clip-path="url(#planet-clip-lg)"><use href="#planet-cracks" transform="rotate(310) scale(1.38)"/></g>
+        <g class="timeline-planet planet--2026" transform="translate(956 196)">
+          <circle r="38"/>
+          <g class="planet-cracks" clip-path="url(#planet-clip-lg)"><use href="#planet-cracks" transform="rotate(310) scale(2.0)"/></g>
         </g>
       </svg>
       <ol class="timeline-labels">
@@ -108,45 +91,24 @@
         <li style="--pos: 66%"><strong>1933</strong><span>Hitler</span></li>
         <li style="--pos: 98%" class="timeline-now"><strong>2026</strong><span>The present day</span></li>
       </ol>
-      <p class="timeline-caption">Manneken Pis Against Blindfolded <span class="nowrap">Geo-political</span> Leaders</p>
+      <p class="timeline-caption">With humour we rebel.<br>With humour we resist the lies.</p>
     </div>
   </section>
 
-  <!-- Chapter III - 2026 · merch-green panel -->
-  <section class="chapter chapter--2026" id="chapter-2026">
+  <!-- 2026 · green panel; the manifesto reads as a second body
+       paragraph here rather than as a pull-quote -->
+  <section class="chapter chapter--2026" id="today">
     <div class="chapter-grid">
       <div class="chapter-copy reveal">
-        <p class="chapter-label">Chapter III · 2026</p>
-        <h2 class="chapter-title">Against the<br>Blindness<br>Of Authoritarian<br>Leaders and &ldquo;Influencers&rdquo;</h2>
-        <p class="chapter-body">THE RE-EMERGENCE OF MANNEKEN PIS AS THE SYMBOL OF DEFIANCE, HUMOR AND WORLD RESISTANCE IS TO RISE HUMAN CONSCIOUSNESS AGAINST THE POTENTIAL DESTRUCTION OF OUR PLANET, THROUGH UNCONTROLLED CLIMATE CHANGE AND LOSS OF HUMAN SOLIDARITY IN SOLVING POLITICAL AND HUMAN CRISIS.</p>
+        <p class="chapter-body">The re-emergence of Manneken Pis as the symbol of defiance, humor and world resistance is to rise human consciousness against the potential destruction of our planet, through uncontrolled climate change and loss of human solidarity in solving political and human crisis.</p>
+        <!-- The two "with humour" sentences now head the arch above; this
+             paragraph picks the manifesto up from there, set bold. -->
+        <p class="chapter-body chapter-body--bold" id="manifesto">We reject the destruction. We react to support the international and multilateral organisations that promote peace, solidarity, and problem-solving through negotiation.</p>
       </div>
       <figure class="chapter-figure reveal delay-2">
         <img src="assets/shirt-design-green.png" alt="The World Liberation Day print in green: the Manneken Pis statue urinating into a carved ashtray bearing a politician's face, above the words Save the World and Join the World Liberation Day." loading="lazy" width="792" height="1070">
         <figcaption>The World Liberation Day print · Liberation Green</figcaption>
       </figure>
-    </div>
-  </section>
-
-  <!-- Manifesto -->
-  <section class="manifesto" id="manifesto">
-    <blockquote class="manifesto-quote reveal">
-      <p>With humour we <em>rebel</em>. With humour we <em>resist</em> the lies. We <em>reject</em> the destruction. We <em>react</em> to support the international and multilateral organisations that promote peace, solidarity, and problem-solving through negotiation.</p>
-      <cite>The Rebel Choc manifesto</cite>
-    </blockquote>
-  </section>
-
-  <!-- ══════════════ THE CHOCOLATE ══════════════ -->
-  <section class="chocolate" id="chocolate">
-    <div class="chocolate-grid">
-      <figure class="chocolate-figure reveal">
-        <img src="assets/chocolate-2026.png" alt="The Rebel Choc edition: a dark-chocolate Manneken Pis figure above a milk-chocolate ashtray bearing a politician's face." loading="lazy" width="1014" height="1080">
-      </figure>
-      <div class="chocolate-copy reveal delay-2">
-        <p class="eyebrow">Where it all began</p>
-        <h2 class="section-title">The original rebellion<br>is made of chocolate</h2>
-        <p class="chapter-body">Before the tee, there was the chocolate. The original <strong>Rebel Choc</strong>, a solid Manneken Pis cast in fine Belgian chocolate, is still made, and still sold.</p>
-        <p class="chapter-body chocolate-exclusive"><strong>Available only in Brussels, Belgium.</strong> No web shop, no shipping. If you want to taste the revolution, you must come to its capital.</p>
-      </div>
     </div>
   </section>
 
@@ -160,16 +122,16 @@
       <div class="join-cards reveal-stagger">
         <a class="join-card" href="#order">
           <span class="join-step" aria-hidden="true">01</span>
-          <h3 class="join-card-title">Wear</h3>
-          <p class="join-card-text">Put on the World Liberation Day tee, a wearable symbol of resistance, in four colours.</p>
+          <h3 class="join-card-title">Buy and Wear</h3>
+          <p class="join-card-text">Put on the World Liberation Day tee, a wearable symbol of resistance, in five colours.</p>
           <span class="join-card-link">Order the tee →</span>
         </a>
-        <a class="join-card" href="#chocolate">
+        <!-- Static since the chocolate section it used to link to is gone -->
+        <div class="join-card join-card--static">
           <span class="join-step" aria-hidden="true">02</span>
           <h3 class="join-card-title">Taste</h3>
           <p class="join-card-text">Buy the original Rebel Chocolate, hand-made in Belgium, sold only in Brussels.</p>
-          <span class="join-card-link">Find the chocolate →</span>
-        </a>
+        </div>
         <div class="join-card join-card--static">
           <span class="join-step" aria-hidden="true">03</span>
           <h3 class="join-card-title">Share</h3>
@@ -177,7 +139,7 @@
         </div>
       </div>
       <figure class="join-figure reveal delay-3">
-        <img src="assets/join-poster.png" alt="Save the World poster in green: Manneken Pis over the carved ashtray, with the words Join the World Liberation Day." loading="lazy" width="790" height="1080">
+        <img src="assets/shirt-design-black.png" alt="The World Liberation Day print in black: Manneken Pis urinating onto a carved ashtray bearing a politician's face, with the words World Liberation Day and Save the World." loading="lazy" width="800" height="1059">
       </figure>
     </div>
   </section>
@@ -187,29 +149,31 @@
     <div class="section-head section-head--center reveal">
       <p class="eyebrow">Limited edition · Printed in Belgium</p>
       <h2 class="section-title">The World Liberation Day Tee</h2>
-      <p class="order-sub">Four colours. Two sizes. One statement.</p>
+      <p class="order-sub">Five colours. Two sizes. One statement.</p>
     </div>
 
+    <!-- Each card carries its own colourway of the print, all five framed
+         identically so the colour is the only thing that changes card to card. -->
     <div class="shirt-grid reveal-stagger">
-      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Solar Yellow - suggested filename: assets/tee-yellow.png -->
       <button type="button" class="shirt-card is-selected" data-colour="Solar Yellow" style="--swatch: #F5D80C" aria-pressed="true">
-        <span class="img-placeholder shirt-placeholder"><span>Solar Yellow tee</span></span>
+        <img class="shirt-thumb" src="assets/tee-yellow.jpg" alt="The World Liberation Day print on Solar Yellow" loading="lazy" width="480" height="640">
         <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Solar Yellow</span>
       </button>
-      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Pure White - suggested filename: assets/tee-white.png -->
       <button type="button" class="shirt-card" data-colour="Pure White" style="--swatch: #F8F5F2" aria-pressed="false">
-        <span class="img-placeholder shirt-placeholder"><span>Pure White tee</span></span>
+        <img class="shirt-thumb" src="assets/tee-white.jpg" alt="The World Liberation Day print on Pure White" loading="lazy" width="480" height="640">
         <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Pure White</span>
       </button>
-      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Liberation Green - suggested filename: assets/tee-green.png -->
       <button type="button" class="shirt-card" data-colour="Liberation Green" style="--swatch: #4DE86B" aria-pressed="false">
-        <span class="img-placeholder shirt-placeholder"><span>Liberation Green tee</span></span>
+        <img class="shirt-thumb" src="assets/tee-green.jpg" alt="The World Liberation Day print on Liberation Green" loading="lazy" width="480" height="640">
         <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Liberation Green</span>
       </button>
-      <!-- IMAGE PLACEHOLDER: t-shirt mockup, Sky Cyan - suggested filename: assets/tee-cyan.png -->
       <button type="button" class="shirt-card" data-colour="Sky Cyan" style="--swatch: #1FD3F5" aria-pressed="false">
-        <span class="img-placeholder shirt-placeholder"><span>Sky Cyan tee</span></span>
+        <img class="shirt-thumb" src="assets/tee-blue.jpg" alt="The World Liberation Day print on Sky Cyan" loading="lazy" width="480" height="640">
         <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Sky Cyan</span>
+      </button>
+      <button type="button" class="shirt-card shirt-card--dark" data-colour="Dark Resistance" style="--swatch: #0E0E0E" aria-pressed="false">
+        <img class="shirt-thumb" src="assets/tee-black.jpg" alt="The World Liberation Day print on Dark Resistance black" loading="lazy" width="480" height="640">
+        <span class="shirt-name"><span class="swatch" aria-hidden="true"></span>Dark Resistance</span>
       </button>
     </div>
 
@@ -218,13 +182,13 @@
         <div class="size-block">
           <span class="order-label" id="size-label">Size</span>
           <div class="size-row" role="group" aria-labelledby="size-label">
-            <button type="button" class="size-btn is-selected" data-size="M" aria-pressed="true">M</button>
-            <button type="button" class="size-btn" data-size="L" aria-pressed="false">L</button>
+            <button type="button" class="size-btn is-selected" data-size="L" aria-pressed="true">L</button>
+            <button type="button" class="size-btn" data-size="XL" aria-pressed="false">XL</button>
           </div>
         </div>
         <div class="pick-block">
           <span class="order-label">Your pick</span>
-          <p class="pick-note" id="pick-note" aria-live="polite">Solar Yellow · Size M</p>
+          <p class="pick-note" id="pick-note" aria-live="polite">Solar Yellow · Size L</p>
           <p class="pick-hint">Confirm colour &amp; size at eBay checkout</p>
         </div>
       </div>
@@ -239,10 +203,9 @@
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer class="footer">
     <a href="#home" class="wordmark wordmark-footer">Rebel<em>Choc</em></a>
-    <p class="footer-tagline">Laugh, Rebel, Resist</p>
+    <p class="footer-tagline">Laugh | Rebel | Resist</p>
     <nav class="footer-nav" aria-label="Footer">
       <a href="#story">The Story</a>
-      <a href="#chocolate">The Chocolate</a>
       <a href="#join">How to Join</a>
       <a href="#order">Order the Tee</a>
     </nav>
