@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var shirtCards = document.querySelectorAll('.shirt-card');
   var sizeButtons = document.querySelectorAll('.size-btn');
   var pickNote = document.getElementById('pick-note');
-  var pick = { colour: 'Solar Yellow', size: 'L' };
+  var pick = { colour: 'Warm Yellow', size: 'L' };
 
   function updatePick() {
     if (pickNote) pickNote.textContent = pick.colour + ' · Size ' + pick.size;

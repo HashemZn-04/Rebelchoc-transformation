@@ -169,3 +169,26 @@
 <script src="script.js"></script>
 </body>
 </html>
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var sec = document.querySelector('.chapter--origin');
+    var cap = document.querySelector('.origin-caption');
+    var s = sec.getBoundingClientRect();
+    var c = cap.getBoundingClientRect();
+    var cs = getComputedStyle(cap);
+    var out = [
+      'VIEWPORT=' + window.innerWidth + 'x' + window.innerHeight,
+      'DOCELEM_CLIENT=' + document.documentElement.clientWidth,
+      'BODY_SCROLLW=' + document.body.scrollWidth,
+      'SECTION left=' + s.left.toFixed(1) + ' right=' + s.right.toFixed(1) + ' width=' + s.width.toFixed(1) + ' height=' + s.height.toFixed(1),
+      'CAPTION left=' + c.left.toFixed(1) + ' right=' + c.right.toFixed(1) + ' width=' + c.width.toFixed(1) + ' height=' + c.height.toFixed(1),
+      'CAPTION fontsize=' + cs.fontSize + ' cssleft=' + cs.left + ' cssright=' + cs.right,
+      'CAPTION scrollW=' + cap.scrollWidth + ' clientW=' + cap.clientWidth,
+      'CAP_OVERFLOW_RIGHT=' + (c.right - document.documentElement.clientWidth).toFixed(1)
+    ].join(' | ');
+    document.title = 'RESULT:: ' + out;
+    document.body.innerHTML = '<pre id="R">' + out + '</pre>';
+  }, 400);
+});
+</script>

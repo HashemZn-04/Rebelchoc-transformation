@@ -167,5 +167,37 @@
 </button>
 
 <script src="script.js"></script>
+
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    document.querySelectorAll('.reveal,.reveal-stagger').forEach(function(e){e.classList.add('is-visible');});
+    var st=document.createElement('style');
+    st.textContent='.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important;transition:none!important}';
+    document.head.appendChild(st);
+    var sec=document.getElementById('origin');
+    var t=document.querySelector('.chapter--origin .chapter-title');
+    var cap=document.querySelector('.origin-caption');
+    var sr=sec.getBoundingClientRect(), tr=t.getBoundingClientRect(), cr=cap.getBoundingClientRect();
+    var cs=getComputedStyle(sec);
+    var out={
+      vw: window.innerWidth, vh: window.innerHeight,
+      docScrollW: document.documentElement.scrollWidth,
+      bodyScrollW: document.body.scrollWidth,
+      secW: Math.round(sr.width), secH: Math.round(sr.height),
+      secLeft: Math.round(sr.left), secRight: Math.round(sr.right),
+      minH: cs.minHeight, ar: cs.aspectRatio, disp: cs.display,
+      titleL: Math.round(tr.left), titleR: Math.round(tr.right), titleW: Math.round(tr.width),
+      capL: Math.round(cr.left), capR: Math.round(cr.right)
+    };
+    // control: kill min-height
+    sec.style.minHeight='0px';
+    var sr2=sec.getBoundingClientRect(), tr2=t.getBoundingClientRect();
+    out.noMinH_secW=Math.round(sr2.width); out.noMinH_secH=Math.round(sr2.height);
+    out.noMinH_titleL=Math.round(tr2.left); out.noMinH_titleR=Math.round(tr2.right);
+    document.title='RESULT '+JSON.stringify(out);
+  }, 300);
+});
+</script>
 </body>
 </html>
